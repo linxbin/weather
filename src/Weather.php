@@ -41,7 +41,7 @@ class Weather
      * @throws HttpException
      * @throws InvalidArgumentException
      */
-    public function getWeather($city, string $type = 'base', string $format = 'json')
+    public function getWeather($city, $type = 'base', $format = 'json')
     {
         $url = 'https://restapi.amap.com/v3/weather/weatherInfo';
 
@@ -53,11 +53,14 @@ class Weather
             throw new InvalidArgumentException('Invalid type value(base/all): '.$type);
         }
 
+        $format = \strtolower($format);
+        $type = \strtolower($type);
+
         $query = array_filter([
             'key' => $this->key,
             'city' => $city,
-            'output' => \strtolower($format),
-            'extensions' =>  \strtolower($type),
+            'output' => $format,
+            'extensions' => $type,
         ]);
 
         try {
@@ -69,5 +72,29 @@ class Weather
         } catch (\Exception $e) {
             throw new HttpException($e->getMessage(), $e->getCode(), $e);
         }
+    }
+
+    /**
+     * @param $city
+     * @param string $format
+     * @return mixed|string
+     * @throws HttpException
+     * @throws InvalidArgumentException
+     */
+    public function getLiveWeather($city, $format = 'json')
+    {
+        return $this->getWeather($city, 'base', $format);
+    }
+
+    /**
+     * @param $city
+     * @param string $format
+     * @return mixed|string
+     * @throws HttpException
+     * @throws InvalidArgumentException
+     */
+    public function getForecastsWeather($city, $format = 'json')
+    {
+        return $this->getWeather($city, 'all', $format);
     }
 }
