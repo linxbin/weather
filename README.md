@@ -1,8 +1,6 @@
 <h1 align="center"> weather </h1>
 
-[![Build Status](https://travis-ci.org/linxbin/weather.svg?branch=master)](https://travis-ci.org/linxbin/weather)
-
-[![StyleCI](https://github.styleci.io/repos/253999428/shield?branch=master)](https://github.styleci.io/repos/253999428)
+[![Build Status](https://travis-ci.org/linxbin/weather.svg?branch=master)](https://travis-ci.org/linxbin/weather) [![StyleCI](https://github.styleci.io/repos/253999428/shield?branch=master)](https://github.styleci.io/repos/253999428)
 
 <p align="center"> .</p>
 
